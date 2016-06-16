@@ -145,6 +145,12 @@ getDropdownItemValue() {
 }
 
 addOnEvent("User/User/Select_User", "click", "dropdownItemValue = getFieldValue(\"User/User/Select_User\")");
+addOnEvent("Control/Tab1/Period", "click", "dropdownItemValue = getFieldValue(\"Control/Tab1/Period\")");
+addOnEvent("Control/Tab1/Functional_Category", "click", "dropdownItemValue = getFieldValue(\"Control/Tab1/Functional_Category\")");
+addOnEvent("Control/Tab1/Functional_Category_2", "click", "dropdownItemValue = getFieldValue(\"Control/Tab1/Functional_Category_2\")");
+addOnEvent("Control/Tab3/Sherd_Type", "click", "dropdownItemValue = getFieldValue(\"Control/Tab3/Sherd_Type\")");
+addOnEvent("Control/Tab3/General_WARE_Category", "click", "dropdownItemValue = getFieldValue(\"Control/Tab3/General_WARE_Category\")");
+addOnEvent("Control/Tab3/General_Form_Category", "click", "dropdownItemValue = getFieldValue(\"Control/Tab3/General_Form_Category\")");
 addOnEvent("Interview/Interview/List_of_Agent_Roles", "click", "dropdownItemValue = getFieldValue(\"Interview/Interview/List_of_Agent_Roles\")");
 addOnEvent("Interview/Interview/Linguistic_Data_Type", "click", "dropdownItemValue = getFieldValue(\"Interview/Interview/Linguistic_Data_Type\")");
 addOnEvent("Interview/Interview/Discourse_Type", "click", "dropdownItemValue = getFieldValue(\"Interview/Interview/Discourse_Type\")");
@@ -486,6 +492,7 @@ makeVocab("DropDown", "Interview/Interview/Language_Local_Name", "Language Local
 makeVocab("DropDown", "Interview/Interview/Language_Content_ISO639-3", "Language Content ISO639-3");
 makeVocab("DropDown", "Interview/Interview/Language_Subject_ISO639-3", "Language Subject ISO639-3");
 makeVocab("DropDown", "Agent_Role/Agent_Role/Role", "Role");
+makeVocab("DropDown", "Control/Tab3/Sherd_Type", "Sherd_Type");
 
 
 /******************************************************************************/
@@ -687,8 +694,32 @@ onClickInterviewAddAgentRole () {
   newAgentRole();
 }
 
+onShowControl () {
+	cancelTab("Control/Base", false);
+	cancelTab("Control/Body", false);
+	cancelTab("Control/BaseBody", false);
+	cancelTab("Control/Handle", false);
+	cancelTab("Control/Neck", false);
+	cancelTab("Control/Tab8", false);
+}
+
+loadTabs(){
+		  fetchOne("SELECT vocabName FROM vocabulary WHERE vocabid = '"+getFieldValue("Control/Tab3/Sherd_Type")+"';",
+        new FetchCallback() {
+          onFetch(name) {
+            if (!isNull(name)){
+                String vocab = name.get(0);
+								if ((vocab.equals("A")) || (vocab.equals("{A}"))){
+										showTab("Control/Body");
+								}
+            } 
+          }});    
+}
+
 addOnEvent("User/User/Login", "click", "onClickUserLogin()");
+addOnEvent("Control", "show", "onShowControl()");
 addOnEvent("Control/Main/Record_Interview", "click", "onClickControlRecordInterview()");
+addOnEvent("Control/Tab3/Load_Tabs", "click", "loadTabs()");
 addOnEvent("Interview/Interview/Add_Agent_Role", "click", "onClickInterviewAddAgentRole()");
 
 
@@ -1052,50 +1083,6 @@ addOnEvent("User", "show", "removeNavigationButtons()");
 addOnEvent("Control", "show", "removeNavigationButtons()");
 addOnEvent("Interview", "show", "addNavigationButtons(\"Interview\")");
 addOnEvent("Agent_Role", "show", "addNavigationButtons(\"Agent_Role\")");
-
-/******************************************************************************/
-/*                                   SEARCH                                   */
-/******************************************************************************/
-addOnEvent("Control/Search"               , "show"  , "search();");
-addOnEvent("Control/Search/Entity_List"   , "click" , "loadEntity();");
-addOnEvent("Control/Search/Search_Button" , "click" , "search()");
-addOnEvent("Control/Search/Search_Term"   , "click" , "clearSearch()");
-addOnEvent("Control/Search/Entity_Types"  , "click" , "search()");
-
-entityTypes = new ArrayList();
-entityTypes.add(new NameValuePair("{All}", ""));
-entityTypes.add(new NameValuePair("{Interview}", "Interview"));
-entityTypes.add(new NameValuePair("{Agent_Role}", "Agent Role"));
-populateDropDown("Control/Search/Entity_Types", entityTypes);
-
-clearSearch(){
-  setFieldValue("Control/Search/Search_Term","");
-}
-
-search(){
-  String tabgroup = "Control";
-  String refEntityList  = tabgroup + "/Search/Entity_List";
-  String refSearchTerm  = tabgroup + "/Search/Search_Term";
-  String refEntityTypes = tabgroup + "/Search/Entity_Types";
-
-  String type = getFieldValue(refEntityTypes);
-  String term = getFieldValue(refSearchTerm);
-  String searchQuery = "SELECT uuid, response "+
-                       "  FROM latestNonDeletedArchEntFormattedIdentifiers  "+
-                       " WHERE uuid in (SELECT uuid "+
-                       "                  FROM latestNonDeletedArchEntIdentifiers "+
-                       "                 WHERE measure LIKE '"+term+"'||'%'  "+
-                       "                   AND ( aenttypename LIKE '"+type+"' OR '' = '"+type+"' ) "+
-                       "                )  "+
-                       " ORDER BY response "+
-                       " LIMIT ? "+
-                       "OFFSET ? ";
-
-  populateCursorList(refEntityList, searchQuery, 25);
-  refreshTabgroupCSS(tabgroup);
-
-  Log.d("Module", "Search query: " + searchQuery);
-}
 
 loadInterviewFrom(String uuid) {
   String tabgroup = "Interview";
