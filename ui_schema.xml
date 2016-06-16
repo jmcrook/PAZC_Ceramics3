@@ -27,18 +27,68 @@
               <Record_Interview/>
               <GPS_Diagnostics/>
             </Main>
-            <Search>
-              <Colgroup_0>
-                <Col_0>
-                  <Search_Term/>
-                </Col_0>
-                <Col_1>
-                  <Search_Button/>
-                </Col_1>
-              </Colgroup_0>
-              <Entity_Types/>
-              <Entity_List/>
-            </Search>
+            <Tab1>
+              <Inventory_Number/>
+              <Conjunto/>
+              <Unit/>
+              <Locus/>
+              <Artifact_Number/>
+              <Special_Find_Number/>
+              <Weight/>
+              <Style/>
+              <Period/>
+              <Functional_Category/>
+              <Functional_Category_2/>
+            </Tab1>
+            <Tab2>
+              <Notes/>
+              <Questions/>
+            </Tab2>
+            <Tab3>
+              <Sherd_Type/>
+              <General_WARE_Category/>
+              <General_Form_Category/>
+							<Load_Tabs/>
+            </Tab3>
+            <Tab4>
+              <Firing/>
+            </Tab4>
+            <Tab5>
+              <Surface_Condition/>
+              <Predominant_Paste_Color/>
+              <Paste_Code/>
+            </Tab5>
+            <Tab6>
+              <Photograph/>
+              <Attach_Photograph/>
+              <Attach_Sketch/>
+            </Tab6>
+            <Base>
+              <BaseThickness/>
+              <BaseDiameter/>
+              <BasePercentage/>
+            </Base>
+            <Body>
+              <BodyThickness/>
+            </Body>
+            <BaseBody>
+              <BaseThickness/>
+              <BaseDiameter/>
+              <BasePercentage/>
+              <BodyThickness/>
+            </BaseBody>
+            <Neck>
+              <NeckThickness/>
+              <NeckHeight/>
+            </Neck>
+            <Handle>
+              <HandleForm/>
+              <HandleWidth/>
+              <HandleThickness/>
+              <HandleLength/>
+              <HandleHeight/>
+            </Handle>
+            <Tab8/>
           </Control>
           <Interview>
             <Interview>
@@ -108,7 +158,7 @@
           </item>
         </select1>
         <trigger ref="Login">
-          <label>{LoginYOLOOOO}</label>
+          <label>{Login}</label>
         </trigger>
       </group>
     </group>
@@ -123,37 +173,208 @@
           <label>{GPS_Diagnostics}</label>
         </input>
       </group>
-      <group ref="Search" faims_scrollable="false">
-        <label>{Records}</label>
-        <group faims_style="orientation" ref="Colgroup_0">
-          <label/>
-          <group faims_style="even" ref="Col_0">
-            <label/>
-            <input ref="Search_Term">
-              <label>{Search_Term}</label>
-            </input>
-          </group>
-          <group faims_style="large" ref="Col_1">
-            <label/>
-            <trigger ref="Search_Button">
-              <label>{Search}</label>
-            </trigger>
-          </group>
-        </group>
-        <select1 ref="Entity_Types">
-          <label>{Entity_Types}</label>
+      <group ref="Tab1">
+        <label>{Tab1}</label>
+        <input ref="Inventory_Number">
+          <label>{Inventory_Number}</label>
+        </input>
+        <input ref="Conjunto">
+          <label>{Conjunto}</label>
+        </input>
+        <input ref="Unit">
+          <label>{Unit}</label>
+        </input>
+        <input ref="Locus">
+          <label>{Locus}</label>
+        </input>
+        <input ref="Artifact_Number">
+          <label>{Artifact_Number}</label>
+        </input>
+        <input ref="Special_Find_Number">
+          <label>{Special_Find_Number}</label>
+        </input>
+        <input ref="Weight">
+          <label>{Weight}</label>
+        </input>
+        <select1 type="image" ref="Style">
+          <label>{Style}</label>
           <item>
             <label>Options not loaded</label>
-            <value>Options not loaded</value>
+            <value>0</value>
           </item>
         </select1>
-        <select1 appearance="compact" ref="Entity_List">
-          <label>{Entity_List}</label>
+        <select1 ref="Period">
+          <label>{Period}</label>
           <item>
             <label>Options not loaded</label>
-            <value>Options not loaded</value>
+            <value>0</value>
           </item>
         </select1>
+        <select1 ref="Functional_Category">
+          <label>{Functional_Category}</label>
+          <item>
+            <label>Options not loaded</label>
+            <value>0</value>
+          </item>
+        </select1>
+        <select1 ref="Functional_Category_2">
+          <label>{Functional_Category_2}</label>
+          <item>
+            <label>Options not loaded</label>
+            <value>0</value>
+          </item>
+        </select1>
+      </group>
+      <group ref="Tab2">
+        <label>{Tab2}</label>
+        <input ref="Notes">
+          <label>{Notes}</label>
+        </input>
+        <input ref="Questions">
+          <label>{Questions}</label>
+        </input>
+      </group>
+      <group ref="Tab3">
+        <label>{Tab3}</label>
+        <select1 ref="Sherd_Type" faims_attribute_name="Sherd_Type" faims_style_class="required">
+          <label>{Sherd_Type}</label>
+          <item>
+            <label>{placeholder}</label>
+            <value>placeholder</value>
+          </item>
+        </select1>
+        <select1 ref="General_WARE_Category">
+          <label>{General_WARE_Category}</label>
+          <item>
+            <label>Options not loaded</label>
+            <value>0</value>
+          </item>
+        </select1>
+        <select1 ref="General_Form_Category">
+          <label>{General_Form_Category}</label>
+          <item>
+            <label>Options not loaded</label>
+            <value>0</value>
+          </item>
+        </select1>
+				<trigger ref="Load_Tabs">
+          <label>{Load_Tabs}</label>
+        </trigger>
+      </group>
+      <group ref="Tab4">
+        <label>{Tab4}</label>
+        <input ref="Firing">
+          <label>{Firing}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+      </group>
+      <group ref="Tab5">
+        <label>{Tab5}</label>
+        <input ref="Surface_Condition">
+          <label>{Surface_Condition}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="Predominant_Paste_Color">
+          <label>{Predominant_Paste_Color}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="Paste_Code">
+          <label>{Paste_Code}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+      </group>
+      <group ref="Tab6">
+        <label>{Tab6}</label>
+        <input ref="Photograph">
+          <label>{Photograph}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="Attach_Photograph">
+          <label>{Attach_Photograph}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="Attach_Sketch">
+          <label>{Attach_Sketch}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+      </group>
+      <group ref="Base">
+        <label>{Base}</label>
+        <input ref="BaseThickness">
+          <label>{BaseThickness}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="BaseDiameter">
+          <label>{BaseDiameter}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="BasePercentage">
+          <label>{BasePercentage}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+      </group>
+      <group ref="Body">
+        <label>{Body}</label>
+        <input ref="BodyThickness">
+          <label>{BodyThickness}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+      </group>
+      <group ref="BaseBody">
+        <label>{BaseBody}</label>
+        <input ref="BaseThickness">
+          <label>{BaseThickness}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="BaseDiameter">
+          <label>{BaseDiameter}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="BasePercentage">
+          <label>{BasePercentage}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="BodyThickness">
+          <label>{BodyThickness}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+      </group>
+      <group ref="Neck">
+        <label>{Neck}</label>
+        <input ref="NeckThickness">
+          <label>{NeckThickness}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="NeckHeight">
+          <label>{NeckHeight}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+      </group>
+      <group ref="Handle">
+        <label>{Handle}</label>
+        <input ref="HandleForm">
+          <label>{HandleForm}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="HandleWidth">
+          <label>{HandleWidth}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="HandleThickness">
+          <label>{HandleThickness}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="HandleLength">
+          <label>{HandleLength}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="HandleHeight">
+          <label>{HandleHeight}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+      </group>
+      <group ref="Tab8">
+        <label>{Tab8}</label>
       </group>
     </group>
     <group ref="Interview" faims_archent_type="Interview">
