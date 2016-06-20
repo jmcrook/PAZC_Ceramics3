@@ -23,11 +23,9 @@
             </User>
           </User>
           <Control>
-            <Main>
-              <Record_Interview/>
-              <GPS_Diagnostics/>
-            </Main>
             <Tab1>
+	      <New_Bag/>
+	      <Same_Bag/>
               <Inventory_Number/>
               <Conjunto/>
               <Unit/>
@@ -48,7 +46,7 @@
               <Sherd_Type/>
               <General_WARE_Category/>
               <General_Form_Category/>
-							<Load_Tabs/>
+	      <LoadTabs/>
             </Tab3>
             <Tab4>
               <Firing/>
@@ -71,16 +69,21 @@
             <Body>
               <BodyThickness/>
             </Body>
-            <BaseBody>
-              <BaseThickness/>
-              <BaseDiameter/>
-              <BasePercentage/>
-              <BodyThickness/>
-            </BaseBody>
+            <BodyOPT>
+              <BodyThicknessOPT/>
+            </BodyOPT>
             <Neck>
               <NeckThickness/>
-              <NeckHeight/>
             </Neck>
+            <NeckHeight>
+              <NeckHeight/>
+            </NeckHeight>
+            <Rim>
+              <RimProfile/>
+              <RimDiameter/>
+              <RimThickness/>
+              <RimPercent/>
+            </Rim>
             <Handle>
               <HandleForm/>
               <HandleWidth/>
@@ -88,38 +91,22 @@
               <HandleLength/>
               <HandleHeight/>
             </Handle>
+            <Spout>
+              <SpoutDiameter/>
+            </Spout>
+            <Whole>
+              <BaseThicknessOPT/>
+              <BaseDiameterOPT/>
+              <BasePercentMAN/>
+              <BodyDiamOPT/>
+              <HandleFormOPT/>
+              <HandleWidthOPT/>
+              <HandleThicknessOPT/>
+              <HandleLengthOPT/>
+              <HandleHeightOPT/>
+            </Whole>
             <Tab8/>
           </Control>
-          <Interview>
-            <Interview>
-              <Title/>
-              <Description/>
-              <Private/>
-              <Origination_Date/>
-              <Origination_Date_Narrative/>
-              <Add_Agent_Role/>
-              <List_of_Agent_Roles/>
-              <Linguistic_Data_Type/>
-              <Discourse_Type/>
-              <Linguistic_Subject/>
-              <Country/>
-              <Region_Villiage/>
-              <Language_Local_Name/>
-              <Language_Content_ISO639-3/>
-              <Language_Subject_ISO639-3/>
-              <Attached_Audio/>
-              <Button_Attached_Audio/>
-              <Attached_Video/>
-              <Button_Attached_Video/>
-            </Interview>
-          </Interview>
-          <Agent_Role>
-            <Agent_Role>
-              <First_Name/>
-              <Last_Name/>
-              <Role/>
-            </Agent_Role>
-          </Agent_Role>
         </faims>
       </instance>
     </model>
@@ -150,7 +137,7 @@
       <label>{User}</label>
       <group ref="User">
         <label>{User}</label>
-        <select1 ref="Select_User">
+        <select1 ref="Select_User" faims_style_class="required">
           <label>{Select_User}</label>
           <item>
             <label>Options not loaded</label>
@@ -164,53 +151,50 @@
     </group>
     <group ref="Control">
       <label>{Control}</label>
-      <group ref="Main">
-        <label>{Main}</label>
-        <trigger ref="Record_Interview">
-          <label>{Record_Interview}</label>
-        </trigger>
-        <input faims_read_only="true" ref="GPS_Diagnostics">
-          <label>{GPS_Diagnostics}</label>
-        </input>
-      </group>
       <group ref="Tab1">
         <label>{Tab1}</label>
-        <input ref="Inventory_Number">
+        <trigger ref="New_Bag">
+          <label>{New_Bag}</label>
+        </trigger>
+        <trigger ref="Same_Bag">
+          <label>{Same_Bag}</label>
+        </trigger>
+        <input ref="Inventory_Number" faims_style_class="required">
           <label>{Inventory_Number}</label>
         </input>
-        <input ref="Conjunto">
+        <input ref="Conjunto" faims_style_class="required">
           <label>{Conjunto}</label>
         </input>
-        <input ref="Unit">
+        <input ref="Unit" faims_style_class="required">
           <label>{Unit}</label>
         </input>
-        <input ref="Locus">
+        <input ref="Locus" faims_style_class="required">
           <label>{Locus}</label>
         </input>
-        <input ref="Artifact_Number">
+        <input ref="Artifact_Number" faims_style_class="required">
           <label>{Artifact_Number}</label>
         </input>
         <input ref="Special_Find_Number">
           <label>{Special_Find_Number}</label>
         </input>
-        <input ref="Weight">
+        <input ref="Weight" faims_style_class="required">
           <label>{Weight}</label>
         </input>
-        <select1 type="image" ref="Style">
+        <select1 type="image" ref="Style" faims_style_class="required">
           <label>{Style}</label>
           <item>
             <label>Options not loaded</label>
             <value>0</value>
           </item>
         </select1>
-        <select1 ref="Period">
+        <select1 ref="Period" faims_style_class="required">
           <label>{Period}</label>
           <item>
             <label>Options not loaded</label>
             <value>0</value>
           </item>
         </select1>
-        <select1 ref="Functional_Category">
+        <select1 ref="Functional_Category" faims_style_class="required">
           <label>{Functional_Category}</label>
           <item>
             <label>Options not loaded</label>
@@ -236,45 +220,48 @@
       </group>
       <group ref="Tab3">
         <label>{Tab3}</label>
-        <select1 ref="Sherd_Type" faims_attribute_name="Sherd_Type" faims_style_class="required">
+        <select1 ref="Sherd_Type" faims_style_class="required">
           <label>{Sherd_Type}</label>
           <item>
-            <label>{placeholder}</label>
-            <value>placeholder</value>
+            <label>Options not loaded</label>
+            <value>0</value>
           </item>
         </select1>
-        <select1 ref="General_WARE_Category">
+        <select1 ref="General_WARE_Category" faims_style_class="required">
           <label>{General_WARE_Category}</label>
           <item>
             <label>Options not loaded</label>
             <value>0</value>
           </item>
         </select1>
-        <select1 ref="General_Form_Category">
+        <select1 ref="General_Form_Category" faims_style_class="required">
           <label>{General_Form_Category}</label>
           <item>
             <label>Options not loaded</label>
             <value>0</value>
           </item>
         </select1>
-				<trigger ref="Load_Tabs">
-          <label>{Load_Tabs}</label>
+        <trigger ref="LoadTabs">
+          <label>{LoadTabs}</label>
         </trigger>
       </group>
       <group ref="Tab4">
         <label>{Tab4}</label>
-        <input ref="Firing">
+        <select1 ref="Firing" faims_style_class="required" type="image">
           <label>{Firing}</label>
-          <!--WARNING: No type t was given for this view; assuming it is an input-->
-        </input>
+          <item>
+            <label>Options not loaded</label>
+            <value>0</value>
+          </item>
+        </select1>
       </group>
       <group ref="Tab5">
         <label>{Tab5}</label>
-        <input ref="Surface_Condition">
+        <input ref="Surface_Condition" faims_style_class="required">
           <label>{Surface_Condition}</label>
           <!--WARNING: No type t was given for this view; assuming it is an input-->
         </input>
-        <input ref="Predominant_Paste_Color">
+        <input ref="Predominant_Paste_Color" faims_style_class="required">
           <label>{Predominant_Paste_Color}</label>
           <!--WARNING: No type t was given for this view; assuming it is an input-->
         </input>
@@ -300,226 +287,137 @@
       </group>
       <group ref="Base">
         <label>{Base}</label>
-        <input ref="BaseThickness">
+        <input ref="BaseThickness" faims_style_class="required">
           <label>{BaseThickness}</label>
           <!--WARNING: No type t was given for this view; assuming it is an input-->
         </input>
-        <input ref="BaseDiameter">
+        <input ref="BaseDiameter" faims_style_class="required">
           <label>{BaseDiameter}</label>
           <!--WARNING: No type t was given for this view; assuming it is an input-->
         </input>
-        <input ref="BasePercentage">
+        <input ref="BasePercentage" faims_style_class="required">
           <label>{BasePercentage}</label>
           <!--WARNING: No type t was given for this view; assuming it is an input-->
         </input>
       </group>
       <group ref="Body">
         <label>{Body}</label>
-        <input ref="BodyThickness">
+        <input ref="BodyThickness" faims_style_class="required">
           <label>{BodyThickness}</label>
           <!--WARNING: No type t was given for this view; assuming it is an input-->
         </input>
       </group>
-      <group ref="BaseBody">
-        <label>{BaseBody}</label>
-        <input ref="BaseThickness">
-          <label>{BaseThickness}</label>
-          <!--WARNING: No type t was given for this view; assuming it is an input-->
-        </input>
-        <input ref="BaseDiameter">
-          <label>{BaseDiameter}</label>
-          <!--WARNING: No type t was given for this view; assuming it is an input-->
-        </input>
-        <input ref="BasePercentage">
-          <label>{BasePercentage}</label>
-          <!--WARNING: No type t was given for this view; assuming it is an input-->
-        </input>
-        <input ref="BodyThickness">
-          <label>{BodyThickness}</label>
+      <group ref="BodyOPT">
+        <label>{BodyOPT}</label>
+        <input ref="BodyThicknessOPT">
+          <label>{BodyThicknessOPT}</label>
           <!--WARNING: No type t was given for this view; assuming it is an input-->
         </input>
       </group>
       <group ref="Neck">
         <label>{Neck}</label>
-        <input ref="NeckThickness">
+        <input ref="NeckThickness" faims_style_class="required">
           <label>{NeckThickness}</label>
           <!--WARNING: No type t was given for this view; assuming it is an input-->
         </input>
+      </group>
+      <group ref="NeckHeight">
+        <label>{NeckHeight}</label>
         <input ref="NeckHeight">
           <label>{NeckHeight}</label>
           <!--WARNING: No type t was given for this view; assuming it is an input-->
         </input>
       </group>
+      <group ref="Rim">
+        <label>{Rim}</label>
+        <input ref="RimProfile" faims_style_class="required">
+          <label>{RimProfile}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="RimDiameter" faims_style_class="required">
+          <label>{RimDiameter}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="RimThickness" faims_style_class="required">
+          <label>{RimThickness}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="RimPercent" faims_style_class="required">
+          <label>{RimPercent}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+      </group>
       <group ref="Handle">
         <label>{Handle}</label>
-        <input ref="HandleForm">
+        <input ref="HandleForm" faims_style_class="required">
           <label>{HandleForm}</label>
           <!--WARNING: No type t was given for this view; assuming it is an input-->
         </input>
-        <input ref="HandleWidth">
+        <input ref="HandleWidth" faims_style_class="required">
           <label>{HandleWidth}</label>
           <!--WARNING: No type t was given for this view; assuming it is an input-->
         </input>
-        <input ref="HandleThickness">
+        <input ref="HandleThickness" faims_style_class="required">
           <label>{HandleThickness}</label>
           <!--WARNING: No type t was given for this view; assuming it is an input-->
         </input>
-        <input ref="HandleLength">
+        <input ref="HandleLength" faims_style_class="required">
           <label>{HandleLength}</label>
           <!--WARNING: No type t was given for this view; assuming it is an input-->
         </input>
-        <input ref="HandleHeight">
+        <input ref="HandleHeight" faims_style_class="required">
           <label>{HandleHeight}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+      </group>
+      <group ref="Spout">
+        <label>{Spout}</label>
+        <input ref="SpoutDiameter" faims_style_class="required">
+          <label>{SpoutDiameter}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+      </group>
+      <group ref="Whole">
+        <label>{Whole}</label>
+        <input ref="BaseThicknessOPT">
+          <label>{BaseThicknessOPT}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="BaseDiameterOPT">
+          <label>{BaseDiameterOPT}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="BasePercentMAN" faims_style_class="required">
+          <label>{BasePercentMAN}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="BodyDiamOPT">
+          <label>{BodyDiamOPT}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="HandleFormOPT">
+          <label>{HandleFormOPT}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="HandleWidthOPT">
+          <label>{HandleWidthOPT}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="HandleThicknessOPT">
+          <label>{HandleThicknessOPT}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="HandleLengthOPT">
+          <label>{HandleLengthOPT}</label>
+          <!--WARNING: No type t was given for this view; assuming it is an input-->
+        </input>
+        <input ref="HandleHeightOPT">
+          <label>{HandleHeightOPT}</label>
           <!--WARNING: No type t was given for this view; assuming it is an input-->
         </input>
       </group>
       <group ref="Tab8">
         <label>{Tab8}</label>
-      </group>
-    </group>
-    <group ref="Interview" faims_archent_type="Interview">
-      <label>{Interview}</label>
-      <group ref="Interview">
-        <label>{Interview}</label>
-        <input faims_attribute_type="measure" ref="Title" faims_attribute_name="Title" faims_style_class="required">
-          <label>{Title}</label>
-          <!--WARNING: No type t was given for this view; assuming it is an input-->
-        </input>
-        <input faims_attribute_type="measure" ref="Description" faims_attribute_name="Description" faims_style_class="required">
-          <label>{Description}</label>
-          <!--WARNING: No type t was given for this view; assuming it is an input-->
-        </input>
-        <select1 appearance="full" faims_attribute_type="vocab" ref="Private" faims_attribute_name="Private" faims_style_class="required">
-          <label>{Private}</label>
-          <item>
-            <label>Options not loaded</label>
-            <value>0</value>
-          </item>
-        </select1>
-        <input faims_attribute_type="measure" ref="Origination_Date" faims_attribute_name="Origination Date" faims_style_class="required">
-          <label>{Origination_Date}</label>
-          <!--WARNING: No type t was given for this view; assuming it is an input-->
-        </input>
-        <input faims_attribute_type="measure" ref="Origination_Date_Narrative" faims_attribute_name="Origination Date Narrative">
-          <label>{Origination_Date_Narrative}</label>
-          <!--WARNING: No type t was given for this view; assuming it is an input-->
-        </input>
-        <trigger ref="Add_Agent_Role">
-          <label>{Add_Agent_Role}</label>
-        </trigger>
-        <select1 ref="List_of_Agent_Roles" faims_annotation="false" faims_certainty="false">
-          <label>{List_of_Agent_Roles}</label>
-          <item>
-            <label>Options not loaded</label>
-            <value>0</value>
-          </item>
-        </select1>
-        <select1 faims_attribute_type="vocab" ref="Linguistic_Data_Type" faims_attribute_name="Linguistic Data Type">
-          <label>{Linguistic_Data_Type}</label>
-          <!--WARNING: No type t was given for this view; assuming it is a dropdown-->
-          <item>
-            <label>Options not loaded</label>
-            <value>0</value>
-          </item>
-        </select1>
-        <select1 faims_attribute_type="vocab" ref="Discourse_Type" faims_attribute_name="Discourse Type">
-          <label>{Discourse_Type}</label>
-          <!--WARNING: No type t was given for this view; assuming it is a dropdown-->
-          <item>
-            <label>Options not loaded</label>
-            <value>0</value>
-          </item>
-        </select1>
-        <select1 faims_attribute_type="vocab" ref="Linguistic_Subject" faims_attribute_name="Linguistic Subject">
-          <label>{Linguistic_Subject}</label>
-          <!--WARNING: No type t was given for this view; assuming it is a dropdown-->
-          <item>
-            <label>Options not loaded</label>
-            <value>0</value>
-          </item>
-        </select1>
-        <select1 faims_attribute_type="vocab" ref="Country" faims_attribute_name="Country" faims_style_class="required">
-          <label>{Country}</label>
-          <!--WARNING: No type t was given for this view; assuming it is a dropdown-->
-          <item>
-            <label>Options not loaded</label>
-            <value>0</value>
-          </item>
-        </select1>
-        <select1 faims_attribute_type="vocab" ref="Region_Villiage" faims_attribute_name="Region Villiage">
-          <label>{Region_Villiage}</label>
-          <!--WARNING: No type t was given for this view; assuming it is a dropdown-->
-          <item>
-            <label>Options not loaded</label>
-            <value>0</value>
-          </item>
-        </select1>
-        <select1 faims_attribute_type="vocab" ref="Language_Local_Name" faims_attribute_name="Language Local Name">
-          <label>{Language_Local_Name}</label>
-          <!--WARNING: No type t was given for this view; assuming it is a dropdown-->
-          <item>
-            <label>Options not loaded</label>
-            <value>0</value>
-          </item>
-        </select1>
-        <select1 faims_attribute_type="vocab" ref="Language_Content_ISO639-3" faims_attribute_name="Language Content ISO639-3">
-          <label>{Language_Content_ISO639-3}</label>
-          <!--WARNING: No type t was given for this view; assuming it is a dropdown-->
-          <item>
-            <label>Options not loaded</label>
-            <value>0</value>
-          </item>
-        </select1>
-        <select1 faims_attribute_type="vocab" ref="Language_Subject_ISO639-3" faims_attribute_name="Language Subject ISO639-3">
-          <label>{Language_Subject_ISO639-3}</label>
-          <!--WARNING: No type t was given for this view; assuming it is a dropdown-->
-          <item>
-            <label>Options not loaded</label>
-            <value>0</value>
-          </item>
-        </select1>
-        <select type="file" faims_attribute_type="measure" faims_sync="true" ref="Attached_Audio" faims_attribute_name="Attached Audio">
-          <label>{Attached_Audio}</label>
-          <item>
-            <label>Options not loaded</label>
-            <value>0</value>
-          </item>
-        </select>
-        <trigger ref="Button_Attached_Audio">
-          <label>{Button_Attached_Audio}</label>
-        </trigger>
-        <select type="video" faims_attribute_type="measure" faims_sync="true" ref="Attached_Video" faims_attribute_name="Attached Video">
-          <label>{Attached_Video}</label>
-          <item>
-            <label>Options not loaded</label>
-            <value>0</value>
-          </item>
-        </select>
-        <trigger ref="Button_Attached_Video">
-          <label>{Button_Attached_Video}</label>
-        </trigger>
-      </group>
-    </group>
-    <group ref="Agent_Role" faims_archent_type="Agent Role">
-      <label>{Agent_Role}</label>
-      <group ref="Agent_Role">
-        <label>{Agent_Role}</label>
-        <input faims_attribute_type="measure" ref="First_Name" faims_attribute_name="First Name">
-          <label>{First_Name}</label>
-          <!--WARNING: No type t was given for this view; assuming it is an input-->
-        </input>
-        <input faims_attribute_type="measure" ref="Last_Name" faims_attribute_name="Last Name">
-          <label>{Last_Name}</label>
-          <!--WARNING: No type t was given for this view; assuming it is an input-->
-        </input>
-        <select1 faims_attribute_type="vocab" ref="Role" faims_attribute_name="Role">
-          <label>{Role}</label>
-          <!--WARNING: No type t was given for this view; assuming it is a dropdown-->
-          <item>
-            <label>Options not loaded</label>
-            <value>0</value>
-          </item>
-        </select1>
       </group>
     </group>
   </h:body>
