@@ -1,11 +1,6 @@
 <?xml version="1.0"?>
 <dataSchema>
-  <RelationshipElement name="Interview - Agent Role" type="hierarchical">
-    <description>A 1-to-n relationship between the parent and its children, respectively.</description>
-    <parent>Parent Of</parent>
-    <child>Child Of</child>
-  </RelationshipElement>
-  <ArchaeologicalElement name="Context">
+  <ArchaeologicalElement name="Control">
 	<property name="Sherd_Type" type="enum">
 		<description> Type of Sherd </description>
 		<lookup>
@@ -39,8 +34,12 @@
 			<term>Z<description/></term>
 		</lookup>
 	</property>
-  </ArchaeologicalElement>
-  <ArchaeologicalElement name="Agent Role">
-
+	<property name="Firing" type="enum">
+		<description> Firing </description>
+		<lookup>
+			<term pictureURL="Files/data/images.jpeg">{test} <description/></term>
+			<term pictureURL="Files/data/images2.jpeg">{test2} <description/></term>
+		</lookup>
+	</property>
   </ArchaeologicalElement>
 </dataSchema>
