@@ -145,12 +145,12 @@ getDropdownItemValue() {
 }
 
 addOnEvent("User/User/Select_User", "click", "dropdownItemValue = getFieldValue(\"User/User/Select_User\")");
-addOnEvent("Control/Tab1/Period", "click", "dropdownItemValue = getFieldValue(\"Control/Tab1/Period\")");
-addOnEvent("Control/Tab1/Functional_Category", "click", "dropdownItemValue = getFieldValue(\"Control/Tab1/Functional_Category\")");
-addOnEvent("Control/Tab1/Functional_Category_2", "click", "dropdownItemValue = getFieldValue(\"Control/Tab1/Functional_Category_2\")");
-addOnEvent("Control/Tab3/Sherd_Type", "click", "dropdownItemValue = getFieldValue(\"Control/Tab3/Sherd_Type\")");
-addOnEvent("Control/Tab3/General_WARE_Category", "click", "dropdownItemValue = getFieldValue(\"Control/Tab3/General_WARE_Category\")");
-addOnEvent("Control/Tab3/General_Form_Category", "click", "dropdownItemValue = getFieldValue(\"Control/Tab3/General_Form_Category\")");
+addOnEvent("Control/data/Period", "click", "dropdownItemValue = getFieldValue(\"Control/data/Period\")");
+addOnEvent("Control/data/Functional_Category", "click", "dropdownItemValue = getFieldValue(\"Control/data/Functional_Category\")");
+addOnEvent("Control/data/Functional_Category_2", "click", "dropdownItemValue = getFieldValue(\"Control/data/Functional_Category_2\")");
+addOnEvent("Context/Tab3/Sherd_Type", "click", "dropdownItemValue = getFieldValue(\"Context/Tab3/Sherd_Type\")");
+addOnEvent("Context/Tab3/General_WARE_Category", "click", "dropdownItemValue = getFieldValue(\"Context/Tab3/General_WARE_Category\")");
+addOnEvent("Context/Tab3/General_Form_Category", "click", "dropdownItemValue = getFieldValue(\"Context/Tab3/General_Form_Category\")");
 
 /******************************************************************************/
 /*                                 ACTION BAR                                 */
@@ -472,8 +472,8 @@ makeVocab(String type, String path, String attrib, List vocabExclusions, String 
     });
 }
 
-makeVocab("DropDown", "Control/Tab3/Sherd_Type", "Sherd_Type");
-makeVocab("PictureGallery", "Control/Tab4/Firing", "Firing");
+makeVocab("DropDown", "Context/Tab3/Sherd_Type", "Sherd_Type");
+makeVocab("PictureGallery", "Context/Tab4/Firing", "Firing");
 
 
 /******************************************************************************/
@@ -541,6 +541,45 @@ validateFields(List fields, String format) {
 
   return out;
 }
+
+
+validateContextFields() {
+  validateContextFields(true);
+}
+
+validateContextFields(Boolean showWarning) {
+	// Context Tabgroup required fields
+	List fields = new ArrayList();
+	fields.add(fieldPair("Control/data/Inventory_Number" , "{Inventory_Number}"));
+	fields.add(fieldPair("Control/data/Conjunto" , "{Conjunto}"));
+	fields.add(fieldPair("Control/data/Unit" , "{Unit}"));
+	fields.add(fieldPair("Control/data/Locus" , "{Locus}"));
+	fields.add(fieldPair("Control/data/Artifact_Number" , "{Artifact_Number}"));
+	fields.add(fieldPair("Control/data/Date" , "{Date}"));
+	fields.add(fieldPair("Control/data/Weight" , "{Weight}"));
+	fields.add(fieldPair("Control/data/Style" , "{Style}"));
+	fields.add(fieldPair("Control/data/Period" , "{Period}"));
+	fields.add(fieldPair("Control/data/Functional_Category" , "{Functional_Category}"));
+	fields.add(fieldPair("Context/Tab3/Sherd_Type" , "{Sherd_Type}"));
+	fields.add(fieldPair("Context/Tab3/General_WARE_Category" , "{General_WARE_Category}"));
+	fields.add(fieldPair("Context/Tab3/General_Form_Category" , "{General_Form_Category}"));
+	fields.add(fieldPair("Context/Tab4/Firing" , "{Firing}"));
+	fields.add(fieldPair("Context/Tab5/Surface_Condition" , "{Surface_Condition}"));
+	fields.add(fieldPair("Context/Tab5/Predominant_Paste_Color" , "{Predominant_Paste_Color}"));
+
+// TODO: VALIDATE DYNAMIC FIELDS
+    	validateFields(fields, "PLAINTEXT");
+}
+
+
+onValidate () {
+
+showWarning("{Warning}", validateContextFields());
+
+}
+
+
+addOnEvent("Context/Validation/Validate", "click", "onValidate()");
 
 
 
@@ -629,17 +668,25 @@ populateAuthorAndTimestamp(String tabgroup) {
   if (!isNull(timestampPath)) setFieldValue(timestampPath, timestampVal);
 }
 
+onShowContext () {
+	cancelTab("Context/Base", false);
+	cancelTab("Context/Body", false);
+	cancelTab("Context/BodyOPT", false);
+	cancelTab("Context/Handle", false);
+	cancelTab("Context/Rim", false);
+	cancelTab("Context/Spout", false);
+	cancelTab("Context/Whole", false);
+	cancelTab("Context/Neck", false);
+	cancelTab("Context/NeckHeight", false);
+	cancelTab("Context/Tab8", false);
+}
+
 onShowControl () {
-	cancelTab("Control/Base", false);
-	cancelTab("Control/Body", false);
-	cancelTab("Control/BodyOPT", false);
-	cancelTab("Control/Handle", false);
-	cancelTab("Control/Rim", false);
-	cancelTab("Control/Spout", false);
-	cancelTab("Control/Whole", false);
-	cancelTab("Control/Neck", false);
-	cancelTab("Control/NeckHeight", false);
-	cancelTab("Control/Tab8", false);
+	fmt     = "yyyy-MM-dd HH:mm:ss z";
+	date    = new Date();
+	dateFmt = new java.text.SimpleDateFormat(fmt);
+	dateStr = dateFmt.format(date);
+	setFieldValue("Control/data/Date", dateStr);
 }
 
 onClickUserLogin () {
@@ -649,78 +696,101 @@ onClickUserLogin () {
 
 newBag () {
  newTabGroup("Control");
+ 
 }
 
 sameBag () {
-
-  String inventoryNo = getFieldValue("Control/Tab1/Inventory_Number");
+  String inventoryNo = getFieldValue("Control/data/Inventory_Number");
+  String conjunto = getFieldValue("Control/data/Conjunto");
+  String locus = getFieldValue("Control/data/Locus");
+  String unit = getFieldValue("Control/data/Unit");
   newTabGroup("Control");
-  setFieldValue("Control/Tab1/Inventory_Number", inventoryNo);
+  setFieldValue("Control/data/Inventory_Number", inventoryNo);
+  setFieldValue("Control/data/Conjunto", conjunto);
+  setFieldValue("Control/data/Locus", locus);
+  setFieldValue("Control/data/Unit", unit);
 
 
 }
 
+fillDetails () {
+  newTabGroup("Context");
+}
+
 addOnEvent("User/User/Login", "click", "onClickUserLogin()");
-addOnEvent("Control/Tab1/New_Bag", "click", "newBag()");
-addOnEvent("Control/Tab1/Same_Bag", "click", "sameBag()");
+addOnEvent("Control/data/Details", "click", "fillDetails()");
+addOnEvent("Context/Validation/New_Bag", "click", "newBag()");
+addOnEvent("Context/Validation/Same_Bag", "click", "sameBag()");
+addOnEvent("Control", "show", "onShowControl()");
 
 /******************************************************************************/
 /*                             DYNAMIC TABS                                   */
 /******************************************************************************/
 
 loadTabs(){
-	onShowControl();
-	fetchOne("SELECT vocabName FROM vocabulary WHERE vocabid = '"+getFieldValue("Control/Tab3/Sherd_Type")+"';",
+	onShowContext();
+	fetchOne("SELECT vocabName FROM vocabulary WHERE vocabid = '"+getFieldValue("Context/Tab3/Sherd_Type")+"';",
 		new FetchCallback() {
 		  onFetch(name) {
 		    if (!isNull(name)){
 			String vocab = name.get(0);
-			if ((vocab.equals("CO")) || (vocab.equals("D")) 
-					|| (vocab.equals("O")) || (vocab.equals("OB")) || (vocab.equals("OH")) 
-					|| (vocab.equals("ON"))  || (vocab.equals("W"))){
-				showTab("Control/Body");
+			if ((vocab.equals("{CO}")) || (vocab.equals("{D}")) 
+					|| (vocab.equals("{O}")) || (vocab.equals("{OB}")) || (vocab.equals("{OH}")) 
+					|| (vocab.equals("{ON}"))  || (vocab.equals("{W}"))){
+				showTab("Context/Body");
 			} 
 
-			if ((vocab.equals("DB")) || (vocab.equals("R")) 
-					|| (vocab.equals("RB")) || (vocab.equals("SH")) || (vocab.equals("T2"))){
-			        showTab("Control/BodyOPT");
+			if ((vocab.equals("{DB}")) || (vocab.equals("{R}")) 
+					|| (vocab.equals("{RB}")) || (vocab.equals("{SH}")) || (vocab.equals("{T2}"))){
+			        showTab("Context/BodyOPT");
 			} 
 			
-			if ((vocab.equals("B")) || (vocab.equals("DB")) || (vocab.equals("RB")) || (vocab.equals("OB"))) {
-				showTab("Control/Base");
+			if ((vocab.equals("{B}")) || (vocab.equals("{DB}")) || (vocab.equals("{RB}")) || (vocab.equals("{OB}"))) {
+				showTab("Context/Base");
 			} 
 
-			if ((vocab.equals("N")) || (vocab.equals("ON")) || (vocab.equals("RN")) || (vocab.equals("W"))) {
-				showTab("Control/NeckHeight");
+			if ((vocab.equals("{N}")) || (vocab.equals("{ON}")) || (vocab.equals("{RN}")) || (vocab.equals("{W}"))) {
+				showTab("Context/NeckHeight");
 			}
 
-			if ((vocab.equals("N")) || (vocab.equals("ON"))) {
-				showTab("Control/Neck");
+			if ((vocab.equals("{N}")) || (vocab.equals("{ON}"))) {
+				showTab("Context/Neck");
 			}
 
-			if ((vocab.equals("R")) || (vocab.equals("RB")) || (vocab.equals("RN")) || (vocab.equals("W"))) {
-				showTab("Control/Rim");
+			if ((vocab.equals("{R}")) || (vocab.equals("{RB}")) || (vocab.equals("{RN}")) || (vocab.equals("{W}"))) {
+				showTab("Context/Rim");
 			}
 
-			if ((vocab.equals("H")) || (vocab.equals("OH")) || (vocab.equals("SH"))) {
-				showTab("Control/Handle");
+			if ((vocab.equals("{H}")) || (vocab.equals("{OH}")) || (vocab.equals("{SH}"))) {
+				showTab("Context/Handle");
 			}
 
-			if ((vocab.equals("S")) || (vocab.equals("SH"))) {
-				showTab("Control/Spout");
+			if ((vocab.equals("{S}")) || (vocab.equals("{SH}"))) {
+				showTab("Context/Spout");
 			}
 
-			if ((vocab.equals("W"))) {
-				showTab("Control/Whole");
+			if ((vocab.equals("{W}"))) {
+				showTab("Context/Whole");
 			}
 		    } 
-		  }});    
+		  }}); 
+
+	fetchOne("SELECT vocabName FROM vocabulary WHERE vocabid = '"+getFieldValue("Context/Tab3/Sherd_Type")+"';",
+		new FetchCallback() {
+		  onFetch(name) {
+		    if (!isNull(name)){
+			String vocab = name.get(0);
+			if ((!vocab.equals("{PLN}"))){
+				showTab("Context/Tab8");
+			} 
+		    } 
+		  }});  
 }
 
 
 
-addOnEvent("Control", "show", "onShowControl()");
-addOnEvent("Control/Tab3/LoadTabs", "click", "loadTabs()");
+addOnEvent("Context", "show", "onShowContext()");
+addOnEvent("Context/Tab3/LoadTabs", "click", "loadTabs()");
 
 
 /******************************************************************************/
@@ -933,7 +1003,7 @@ doNotDelete(){
   showToast("{Delete_Cancelled}");
 }
 addOnEvent("User", "show", "removeNavigationButtons()");
-addOnEvent("Control", "show", "removeNavigationButtons()");
+addOnEvent("Context", "show", "removeNavigationButtons()");
 
 /******************************************************************************/
 /*                                    INIT                                    */
