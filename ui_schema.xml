@@ -22,22 +22,59 @@
               <Login/>
             </User>
           </User>
-          <Control>
-            <Tab1>
-	      <New_Bag/>
-	      <Same_Bag/>
-              <Inventory_Number/>
-              <Conjunto/>
-              <Unit/>
-              <Locus/>
-              <Artifact_Number/>
-              <Special_Find_Number/>
+	  <Control>
+            <data>
+		<Details/>
+		<container1>
+		  <child1>
+		      <Inventory_Number/>
+		  </child1>
+		  <child2>
+		      <Conjunto/>
+		  </child2>
+		  <child3>
+		      <Unit/>
+		  </child3>
+		</container1>
+		<container2>
+		  <child1>
+			<Locus/>
+		  </child1>
+		  <child2>
+			<Artifact_Number/>
+		  </child2>
+		  <child3>
+			<Special_Find_Number/>
+		  </child3>
+		</container2>
+	      <Date/>
               <Weight/>
               <Style/>
               <Period/>
               <Functional_Category/>
               <Functional_Category_2/>
-            </Tab1>
+            </data>
+	    <Search>
+              <container1>
+                <child1>
+                  <Search/>
+                </child1>
+                <child2>
+                  <searchButton/>
+                </child2>
+              </container1>
+              <container2>
+                <child1>
+                  <entityTypes/>
+                </child1>
+                <child2>
+                  <Area_Code/>
+                </child2>
+              </container2>
+              <entityList/>
+	    </Search>
+	  </Control>
+          <Context>
             <Tab2>
               <Notes/>
               <Questions/>
@@ -106,7 +143,12 @@
               <HandleHeightOPT/>
             </Whole>
             <Tab8/>
-          </Control>
+	    <Validation>
+		<Validate/>
+	        <New_Bag/>
+	        <Same_Bag/>
+	    </Validation>
+          </Context>
         </faims>
       </instance>
     </model>
@@ -150,32 +192,56 @@
       </group>
     </group>
     <group ref="Control">
-      <label>{Control}</label>
-      <group ref="Tab1">
-        <label>{Tab1}</label>
-        <trigger ref="New_Bag">
-          <label>{New_Bag}</label>
+      <label/>
+      <group faims_scrollable="true" ref="data">
+        <label>{Contexts}</label>
+        <trigger ref="Details">
+          <label>{Details}</label>
         </trigger>
-        <trigger ref="Same_Bag">
-          <label>{Same_Bag}</label>
-        </trigger>
-        <input ref="Inventory_Number" faims_style_class="required">
-          <label>{Inventory_Number}</label>
-        </input>
-        <input ref="Conjunto" faims_style_class="required">
-          <label>{Conjunto}</label>
-        </input>
-        <input ref="Unit" faims_style_class="required">
-          <label>{Unit}</label>
-        </input>
-        <input ref="Locus" faims_style_class="required">
-          <label>{Locus}</label>
-        </input>
-        <input ref="Artifact_Number" faims_style_class="required">
-          <label>{Artifact_Number}</label>
-        </input>
-        <input ref="Special_Find_Number">
-          <label>{Special_Find_Number}</label>
+        <group faims_style="orientation" ref="container1">
+	  <label/>
+          <group faims_style="even" ref="child1">
+            	<label/>
+		<input ref="Inventory_Number" faims_style_class="required">
+		  <label>{Inventory_Number}</label>
+		</input>
+	  </group>
+          <group faims_style="even" ref="child2">
+            	<label/>
+		<input ref="Conjunto" faims_style_class="required">
+		  <label>{Conjunto}</label>
+		</input>
+	  </group>
+          <group faims_style="even" ref="child3">
+            	<label/>
+		<input ref="Unit" faims_style_class="required">
+		  <label>{Unit}</label>
+		</input>
+	  </group>
+	</group>
+        <group faims_style="orientation" ref="container2">
+	  <label/>
+          <group faims_style="even" ref="child1">
+            	<label/>
+		<input ref="Locus" faims_style_class="required">
+		  <label>{Locus}</label>
+		</input>
+	  </group>
+          <group faims_style="even" ref="child2">
+            	<label/>
+		<input ref="Artifact_Number" faims_style_class="required">
+		  <label>{Artifact_Number}</label>
+		</input>
+	  </group>
+          <group faims_style="even" ref="child3">
+            	<label/>
+		<input ref="Special_Find_Number">
+		  <label>{Special_Find_Number}</label>
+		</input>
+	  </group>
+	</group>
+        <input ref="Date" faims_style_class="required">
+          <label>{Date}</label>
         </input>
         <input ref="Weight" faims_style_class="required">
           <label>{Weight}</label>
@@ -207,8 +273,59 @@
             <label>Options not loaded</label>
             <value>0</value>
           </item>
-        </select1>
+        </select1>  
       </group>
+      <group ref="Search" faims_scrollable="false">
+        <label>{Search}</label>
+        <group faims_style="orientation" ref="container1">
+          <label/>
+          <group faims_style="even" ref="child1">
+            <label/>
+            <input faims_certainty="false" faims_read_only="false" ref="Search">
+              <label>{Search_Term}</label>
+            </input>
+          </group>
+          <group faims_style="large" ref="child2">
+            <label/>
+            <trigger ref="searchButton">
+              <label>{Search}</label>
+            </trigger>
+          </group>
+        </group>
+        <group faims_style="orientation" ref="container2">
+          <label/>
+          <group faims_style="even" ref="child1">
+            <label/>
+            <select1 ref="entityTypes" faims_attribute_type="vocab">
+              <label>{EntityTypes}</label>
+              <item>
+                <label>placeholder</label>
+                <value>placeholder</value>
+              </item>
+            </select1>
+          </group>
+          <group faims_style="even" ref="child2">
+            <label/>
+            <select1 ref="Area_Code">
+              <label>{Select_Area_Code}</label>
+              <item>
+                <label>{placeholder}</label>
+                <value>placeholder</value>
+              </item>
+            </select1>
+          </group>
+        </group>
+        <select1 appearance="compact" ref="entityList" faims_style_class="menu-list">
+          <label>{EntityList}</label>
+          <item>
+            <label>placeholder</label>
+            <value>placeholder</value>
+          </item>
+        </select1>
+      </group>      
+    </group>
+    <group ref="Context">
+      <label>{Context}</label>
       <group ref="Tab2">
         <label>{Tab2}</label>
         <input ref="Notes">
@@ -418,6 +535,18 @@
       </group>
       <group ref="Tab8">
         <label>{Tab8}</label>
+      </group>
+      <group ref="Validation">
+        <label>{Validation}</label>
+        <trigger ref="Validate">
+          <label>{Validate}</label>
+        </trigger>
+        <trigger ref="New_Bag">
+          <label>{New_Bag}</label>
+        </trigger>
+        <trigger ref="Same_Bag">
+          <label>{Same_Bag}</label>
+        </trigger>
       </group>
     </group>
   </h:body>
