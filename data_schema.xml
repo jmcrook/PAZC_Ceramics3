@@ -1,44 +1,265 @@
 <?xml version="1.0"?>
 <dataSchema>
-  <ArchaeologicalElement name="Control">
+  <ArchaeologicalElement name="Context">
+	<property name="Select_User" type="enum">
+		<description>The user creating the entry </description>
+	</property>
+	<property name="Inventory_Number" type="freetext">
+		<description>The user creating the entry </description>
+	</property>
+	<property name="Conjunto" type="freetext">
+		<description>Set </description>
+	</property>
+	<property name="Unit" type="float">
+		<description>Unit </description>
+	</property>
+	<property name="Locus" type="float">
+		<description>Place of find </description>
+	</property>
+	<property name="Artifact_Number" type="float">
+		<description>Artifact number </description>
+	</property>
+	<property name="Weight" type="float">
+		<description>The weight of the artifact </description>
+	</property>
+	<property name="image" type="freetext">
+		<description>Provides an image </description>
+	</property>
+	<property name="Period" type="float">
+		<description>Period </description>
+	</property>
+	<property name="Functional_Category" type="enum">
+		<description>The functional category </description>
+	</property>
+	<property name="General_Form_Category" type="enum">
+		<description>Form category </description>
+	</property>
+	<property name="Predominant_Paste_Color" type="freetext">
+		<description>Color of paste </description>
+	</property>
+	<property name="BaseThickness" type="float">
+		<description>Thickness of the base </description>
+	</property>
+	<property name="BaseDiameter" type="float">
+		<description>Diameter of the base </description>
+	</property>
+	<property name="BasePercentage" type="float">
+		<description>Percentage of base present </description>
+	</property>
+	<property name="BodyThickness" type="float">
+		<description>Thickness of the body </description>
+	</property>
+	<property name="NeckThickness" type="float">
+		<description>Thickness of neck </description>
+	</property>
+	<property name="RimDiameter" type="float">
+		<description>Diameter of the rim </description>
+	</property>
+	<property name="RimThickness" type="float">
+		<description>Thickness of the rim </description>
+	</property>
+	<property name="RimPercent" type="float">
+		<description>Percent of rim present </description>
+	</property>
+	<property name="HandleWidth" type="float">
+		<description>Width of the handle </description>
+	</property>
+	<property name="HandleThickness" type="float">
+		<description>Thickness of the handle </description>
+	</property>
+	<property name="HandleLength" type="float">
+		<description>Length of the handle </description>
+	</property>
+	<property name="HandleHeight" type="float">
+		<description>Height of the handle </description>
+	</property>
+	<property name="SpoutDiameter" type="float">
+		<description>Diameter of the spout </description>
+	</property>
+	<property name="BasePercentMAN" type="float">
+		<description>Mandatory percentage of the base present </description>
+	</property>
 	<property name="Sherd_Type" type="enum">
 		<description> Type of Sherd </description>
 		<lookup>
-			<term>A<description/></term>
-			<term>B<description/></term>
-			<term>C<description/></term>
-			<term>CO<description/></term>
-			<term>D<description/></term>
-			<term>DB<description/></term>
-			<term>E<description/></term>
-			<term>F<description/></term>
-			<term>H<description/></term>
-			<term>L<description/></term>
-			<term>M1<description/></term>
-			<term>N<description/></term>
-			<term>O<description/></term>
-			<term>OB<description/></term>						
-			<term>OH<description/></term>
-			<term>ON<description/></term>
-			<term>P1<description/></term>
-			<term>P2<description/></term>
-			<term>P4<description/></term>
-			<term>R<description/></term>
-			<term>RB<description/></term>
-			<term>RN<description/></term>
-			<term>RY<description/></term>
-			<term>S<description/></term>
-			<term>SH<description/></term>
-			<term>T2<description/></term>
-			<term>W<description/></term>
-			<term>Z<description/></term>
+			<term>{A}<description/></term>
+			<term>{B}<description/></term>
+			<term>{C}<description/></term>
+			<term>{CO}<description/></term>
+			<term>{D}<description/></term>
+			<term>{DB}<description/></term>
+			<term>{E}<description/></term>
+			<term>{F}<description/></term>
+			<term>{H}<description/></term>
+			<term>{L}<description/></term>
+			<term>{M1}<description/></term>
+			<term>{N}<description/></term>
+			<term>{O}<description/></term>
+			<term>{OB}<description/></term>						
+			<term>{OH}<description/></term>
+			<term>{ON}<description/></term>
+			<term>{P1}<description/></term>
+			<term>{P2}<description/></term>
+			<term>{P4}<description/></term>
+			<term>{R}<description/></term>
+			<term>{RB}<description/></term>
+			<term>{RN}<description/></term>
+			<term>{RY}<description/></term>
+			<term>{S}<description/></term>
+			<term>{SH}<description/></term>
+			<term>{T2}<description/></term>
+			<term>{W}<description/></term>
+			<term>{Z}<description/></term>
+		</lookup>
+	</property>
+	<property name="General_WARE_Category" type="enum">
+		<description>The ware category </description>
+		<lookup>
+			<term pictureURL="Files/data/Ware/12_WCW.jpg">{WCW}<description/></term>
+			<term pictureURL="Files/data/Ware/12_VID-SNO.jpg">{VID-SNO}<description/></term>
+			<term pictureURL="Files/data/Ware/12_VID-SBB.jpg">{VID-SBB}<description/></term>
+			<term pictureURL="Files/data/Ware/12_VID-PANPLA.jpg">{VID-PANPLA}<description/></term>
+			<term pictureURL="Files/data/Ware/12_VID-PANP.jpg">{VID-PANP}<description/></term>
+			<term pictureURL="Files/data/Ware/12_VID-PANBW.jpg">{VID-PANBW}<description/></term>
+			<term pictureURL="Files/data/Ware/12_VID-OTH.jpg">{VID-OTH}<description/></term>
+			<term pictureURL="Files/data/Ware/12_VID-GYG.jpg">{VID-GYG}<description/></term>
+			<term pictureURL="Files/data/Ware/12_STN.jpg">{STN}<description/></term>
+			<term pictureURL="Files/data/Ware/12_PRW.jpg">{PRW}<description/></term>
+			<term pictureURL="Files/data/Ware/12_PRC.jpg">{PRC}<description/></term>
+			<term pictureURL="Files/data/Ware/12_PLN.jpg">{PLN}<description/></term>
+			<term pictureURL="Files/data/Ware/12_PIP.jpg">{PIP}<description/></term>
+			<term pictureURL="Files/data/Ware/12_PAL.jpg">{PAL}<description/></term>
+			<term pictureURL="Files/data/Ware/12_OTH.jpg">{OTH}<description/></term>
+			<term pictureURL="Files/data/Ware/12_LOZ.jpg">{LOZ}<description/></term>
+			<term pictureURL="Files/data/Ware/12_DKK.jpg">{DKK}<description/></term>
+			<term pictureURL="Files/data/Ware/12_BOT.jpg">{BOT}<description/></term>
+			<term pictureURL="Files/data/Ware/12_BBW.jpg">{BBW}<description/></term>
 		</lookup>
 	</property>
 	<property name="Firing" type="enum">
 		<description> Firing </description>
 		<lookup>
-			<term pictureURL="Files/data/images.jpeg">{test} <description/></term>
-			<term pictureURL="Files/data/images2.jpeg">{test2} <description/></term>
+			<term pictureURL="Files/data/Firing/19_CE.jpg">{CE}<description/></term>
+			<term pictureURL="Files/data/Firing/19_CI.jpg">{CI}<description/></term>
+			<term pictureURL="Files/data/Firing/19_CN.jpg">{CN}<description/></term>
+			<term pictureURL="Files/data/Firing/19_CO.jpg">{CO}<description/></term>
+			<term pictureURL="Files/data/Firing/19_CR.jpg">{CR}<description/></term>
+			<term pictureURL="Files/data/Firing/19_CS.jpg">{CS}<description/></term>
+			<term pictureURL="Files/data/Firing/19_CX.jpg">{CX}<description/></term>
+			<term pictureURL="Files/data/Firing/19_IA.jpg">{IA}<description/></term>
+			<term pictureURL="Files/data/Firing/19_IE.jpg">{IE}<description/></term>
+			<term pictureURL="Files/data/Firing/19_IG.jpg">{IG}<description/></term>
+			<term pictureURL="Files/data/Firing/19_IK.jpg">{IK}<description/></term>
+			<term pictureURL="Files/data/Firing/19_IL.jpg">{IL}<description/></term>
+			<term pictureURL="Files/data/Firing/19_IM.jpg">{IM}<description/></term>
+			<term pictureURL="Files/data/Firing/19_IN.jpg">{IN}<description/></term>
+			<term pictureURL="Files/data/Firing/19_IO.jpg">{IO}<description/></term>
+			<term pictureURL="Files/data/Firing/19_IP.jpg">{IP}<description/></term>
+			<term pictureURL="Files/data/Firing/19_IR.jpg">{IR}<description/></term>
+			<term pictureURL="Files/data/Firing/19_IT.jpg">{IT}<description/></term>
+			<term pictureURL="Files/data/Firing/19_IU.jpg">{IU}<description/></term>
+			<term pictureURL="Files/data/Firing/19_IX.jpg">{IX}<description/></term>
+			<term pictureURL="Files/data/Firing/19_IY.jpg">{IY}<description/></term>
+			<term pictureURL="Files/data/Firing/19_IZ.jpg">{IZ}<description/></term>
+			<term pictureURL="Files/data/Firing/19_VI.jpg">{VI}<description/></term>
+		</lookup>
+	</property>
+	<property name="Surface_Condition" type="enum">
+		<description> Surface Condition </description>
+		<lookup>
+			<term pictureURL="Files/data/Surface/20_WW.jpg">{WW}<description/></term>
+			<term pictureURL="Files/data/Surface/20_VN.jpg">{VN}<description/></term>
+			<term pictureURL="Files/data/Surface/20_SS.jpg">{SS}<description/></term>
+			<term pictureURL="Files/data/Surface/20_SN.jpg">{SN}<description/></term>
+			<term pictureURL="Files/data/Surface/20_NS.jpg">{NS}<description/></term>
+			<term pictureURL="Files/data/Surface/20_NN.jpg">{NN}<description/></term>
+			<term pictureURL="Files/data/Surface/20_NE.jpg">{NE}<description/></term>
+			<term pictureURL="Files/data/Surface/20_NC.jpg">{NC}<description/></term>
+			<term pictureURL="Files/data/Surface/20_NB.jpg">{NB}<description/></term>
+			<term pictureURL="Files/data/Surface/20_GN.jpg">{GN}<description/></term>
+			<term pictureURL="Files/data/Surface/20_EN.jpg">{EN}<description/></term>
+			<term pictureURL="Files/data/Surface/20_EE.jpg">{EE}<description/></term>
+			<term pictureURL="Files/data/Surface/20_CS.jpg">{CS}<description/></term>
+			<term pictureURL="Files/data/Surface/20_CN.jpg">{CN}<description/></term>
+			<term pictureURL="Files/data/Surface/20_CC.jpg">{CC}<description/></term>
+			<term pictureURL="Files/data/Surface/20_BN.jpg">{BN}<description/></term>
+			<term pictureURL="Files/data/Surface/20_BB.jpg">{BB}<description/></term>
+		</lookup>
+	</property>
+	<property name="RimProfile" type="enum">
+		<description> Rim profile </description>
+		<lookup>
+			<term pictureURL="Files/data/Rims/17_BOT1.jpg">{BOT1}<description/></term>
+			<term pictureURL="Files/data/Rims/17_BOT2.jpg">{BOT2}<description/></term>
+			<term pictureURL="Files/data/Rims/17_BOT3.jpg">{BOT3}<description/></term>
+			<term pictureURL="Files/data/Rims/17_BOT4.jpg">{BOT4}<description/></term>
+			<term pictureURL="Files/data/Rims/17_BOT5.jpg">{BOT5}<description/></term>
+			<term pictureURL="Files/data/Rims/17_BOT6.jpg">{BOT6}<description/></term>
+			<term pictureURL="Files/data/Rims/17_BOT7.jpg">{BOT7}<description/></term>
+			<term pictureURL="Files/data/Rims/17_BOT8.jpg">{BOT8}<description/></term>
+			<term pictureURL="Files/data/Rims/17_BOT9.jpg">{BOT9}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OCEgim>=1.jpg">{OCEgim}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OCHEcih>=1.jpg">{OCHEcih}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OCHEcu:xih~1~1.jpg">{OCHEcu}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OCHUg-xhi>1.jpg">{OCHUg}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OCUxu~1.jpg">{OCUxu}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OG-CHE-Uge>>1.jpg">{OG-CHE-Uge}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OG-CHUge>>1.jpg">{OG-CHUge}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OGEgi_1.jpg">{OGEgi}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OGEgi_=1.jpg">{OGEgi_}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OGEMoemm_1.jpg">{OGEMoemm}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OGIge_=1.jpg">{OGIge}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OGIMg-xhu_1.jpg">{OGIMg}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OGUgem_1.jpg">{OGUgem}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OGU-IHge_=1.jpg">{OGU-IHge}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OGUxu-eh_1.jpg">{OGUxu}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OG-XHIH-Uge_1.jpg">{OG-XHIH-Uge}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OG-XHU-IHxh-xe_=1.jpg">{OG-XHU-IHxh}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OXEHc-ge_1.jpg">{OXEHc}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OXEH-E.jpg">{OXEH}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OXExem_1.jpg">{OXExem}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OX-GIge_1.jpg">{OX-GIge}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OXHEHgu_=1.jpg">{OXHEHgu}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OXHUge_=1.jpg">{OXHUge}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OXHU-IHg-xhe_1.jpg">{OXHU}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OXHUxhu~1.jpg">{OXHUxhu}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OXH-XEge_1.jpg">{OXH-XEge}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OXH-XEgemm_1.jpg">{OXH-XEgemm}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OXU-EH.jpg">{OXU-EH}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OXUge_=1.jpg">{OXUge}<description/></term>
+			<term pictureURL="Files/data/Rims/17_OX-XHIx-xheh-u~1.jpg">{OX-XHIx}<description/></term>
+			<term pictureURL="Files/data/Rims/17_SCE.jpg">{SCE}<description/></term>
+			<term pictureURL="Files/data/Rims/17_SCEM.jpg">{SCEM}<description/></term>
+			<term pictureURL="Files/data/Rims/17_SCHE.jpg">{SCHE}<description/></term>
+			<term pictureURL="Files/data/Rims/17_SCHEMM.jpg">{SCHEMM}<description/></term>
+			<term pictureURL="Files/data/Rims/17_SCI.jpg">{SCI}<description/></term>
+			<term pictureURL="Files/data/Rims/17_SCIM.jpg">{SCIM}<description/></term>
+			<term pictureURL="Files/data/Rims/17_SCU.jpg">{SCU}<description/></term>
+			<term pictureURL="Files/data/Rims/17_SGE.jpg">{SGE}<description/></term>
+			<term pictureURL="Files/data/Rims/17_SGEM.jpg">{SGEM}<description/></term>
+			<term pictureURL="Files/data/Rims/17_SGI.jpg">{SGI}<description/></term>
+			<term pictureURL="Files/data/Rims/17_SGIH.jpg">{SGIH}<description/></term>
+			<term pictureURL="Files/data/Rims/17_SGU.jpg">{SGU}<description/></term>
+			<term pictureURL="Files/data/Rims/17_SXE.jpg">{SXE}<description/></term>
+			<term pictureURL="Files/data/Rims/17_SXEH.jpg">{SXEH}<description/></term>
+			<term pictureURL="Files/data/Rims/17_SXEM.jpg">{SXEM}<description/></term>
+			<term pictureURL="Files/data/Rims/17_SXEMM.jpg">{SXEMM}<description/></term>
+			<term pictureURL="Files/data/Rims/17_SXI.jpg">{SXI}<description/></term>
+			<term pictureURL="Files/data/Rims/17_SXU.jpg">{SXU}<description/></term>		
+		</lookup>
+	</property>
+	<property name="HandleForm" type="enum">
+		<description>Form of the handle </description>
+		<lookup>
+			<term pictureURL="Files/data/Handles/18_T.jpg">{T}<description/></term>
+			<term pictureURL="Files/data/Handles/18_R.jpg">{R}<description/></term>
+			<term pictureURL="Files/data/Handles/18_O.jpg">{O}<description/></term>
+			<term pictureURL="Files/data/Handles/18_FS.jpg">{FS}<description/></term>
+			<term pictureURL="Files/data/Handles/18_FC.jpg">{FC}<description/></term>
+			<term pictureURL="Files/data/Handles/18_F.jpg">{F}<description/></term>
+			<term pictureURL="Files/data/Handles/18_BR.jpg">{BR}<description/></term>
+			<term pictureURL="Files/data/Handles/18_BK.jpg">{BK}<description/></term>
+			<term pictureURL="Files/data/Handles/18_A.jpg">{A}<description/></term>
 		</lookup>
 	</property>
   </ArchaeologicalElement>
