@@ -142,7 +142,10 @@
               <HandleLengthOPT/>
               <HandleHeightOPT/>
             </Whole>
-            <Tab8/>
+            <Tab8>
+		<DecExt/>
+		<DecInt/>
+	    </Tab8>
 	    <Validation>
 		<Validate/>
 	        <New_Bag/>
@@ -344,7 +347,7 @@
             <value>0</value>
           </item>
         </select1>
-        <select1 ref="General_WARE_Category" faims_style_class="required">
+        <select1 ref="General_WARE_Category" faims_style_class="required" type="image">
           <label>{General_WARE_Category}</label>
           <item>
             <label>Options not loaded</label>
@@ -374,10 +377,13 @@
       </group>
       <group ref="Tab5">
         <label>{Tab5}</label>
-        <input ref="Surface_Condition" faims_style_class="required">
+        <select1 ref="Surface_Condition" faims_style_class="required" type="image">
           <label>{Surface_Condition}</label>
-          <!--WARNING: No type t was given for this view; assuming it is an input-->
-        </input>
+          <item>
+            <label>Options not loaded</label>
+            <value>0</value>
+          </item>
+        </select1>
         <input ref="Predominant_Paste_Color" faims_style_class="required">
           <label>{Predominant_Paste_Color}</label>
           <!--WARNING: No type t was given for this view; assuming it is an input-->
@@ -447,10 +453,13 @@
       </group>
       <group ref="Rim">
         <label>{Rim}</label>
-        <input ref="RimProfile" faims_style_class="required">
+        <select1 ref="RimProfile" faims_style_class="required" type="image">
           <label>{RimProfile}</label>
-          <!--WARNING: No type t was given for this view; assuming it is an input-->
-        </input>
+          <item>
+            <label>Options not loaded</label>
+            <value>0</value>
+          </item>
+        </select1>
         <input ref="RimDiameter" faims_style_class="required">
           <label>{RimDiameter}</label>
           <!--WARNING: No type t was given for this view; assuming it is an input-->
@@ -466,10 +475,13 @@
       </group>
       <group ref="Handle">
         <label>{Handle}</label>
-        <input ref="HandleForm" faims_style_class="required">
+        <select1 ref="HandleForm" faims_style_class="required" type="image">
           <label>{HandleForm}</label>
-          <!--WARNING: No type t was given for this view; assuming it is an input-->
-        </input>
+          <item>
+            <label>Options not loaded</label>
+            <value>0</value>
+          </item>
+        </select1>
         <input ref="HandleWidth" faims_style_class="required">
           <label>{HandleWidth}</label>
           <!--WARNING: No type t was given for this view; assuming it is an input-->
