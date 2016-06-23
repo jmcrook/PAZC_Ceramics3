@@ -474,6 +474,10 @@ makeVocab(String type, String path, String attrib, List vocabExclusions, String 
 
 makeVocab("DropDown", "Context/Tab3/Sherd_Type", "Sherd_Type");
 makeVocab("PictureGallery", "Context/Tab4/Firing", "Firing");
+makeVocab("PictureGallery", "Context/Tab3/General_WARE_Category", "General_WARE_Category");
+makeVocab("PictureGallery", "Context/Rim/RimProfile", "RimProfile");
+makeVocab("PictureGallery", "Context/Handle/HandleForm", "HandleForm");
+makeVocab("PictureGallery", "Context/Tab5/Surface_Condition", "Surface_Condition");
 
 
 /******************************************************************************/
@@ -648,6 +652,24 @@ saveTabGroup(String tabgroup, String callback) {
 
   saveTabGroup(tabgroup, id, geometry, attributes, saveCallback, enableAutosave);
 }
+
+
+saveContext(String callback) {
+    Boolean enable_autosave = true;
+    attributes = createAttributeList();
+    //attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    saveTabGroup("Context", context_id, null, attributes, new SaveCallback() {
+        onSave(uuid, newRecord) {
+            context_id = uuid;
+            execute(callback);
+        }
+        onError(message) {
+            showToast(message);
+        }
+    }, enable_autosave);
+}
+
+
 
 populateAuthorAndTimestamp(String tabgroup) {
   Map tabgroupToAuthor    = new HashMap();
